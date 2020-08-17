@@ -17,7 +17,7 @@ class User extends Model {
 			"LOGIN"=>$login
 		));
 
-		if ( count($results) === 0){
+		if (count($results) === 0){
 
 			throw new \Exception("Usuário inexistente ou senha inválida");
 

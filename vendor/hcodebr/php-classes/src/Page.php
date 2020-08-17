@@ -16,7 +16,7 @@ class Page {
 
 	public function __construct($opts = array(), $tpl_dir = "/views/"){
 
-		$this->default["data"]["session"] = $_SESSION;
+		//$this->default["data"]["session"] = $_SESSION;
 
 		$this->options = array_merge($this->defaults, $opts);
 
@@ -53,7 +53,7 @@ class Page {
 
 	public function __destruct(){
 
-		if($this->options["header"] === true) $this->tpl->draw("footer");
+		if($this->options["footer"] === true) $this->tpl->draw("footer");
 
 	}
 }
