@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
               <label for="deslogin">Login</label>
-              <input type="text" class="form-control" id="deslogin" name="deslogin" placeholder="Digite o login"  value="<?php echo htmlspecialchars( $user["deslogin"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+              <input type="text" class="form-control" id="deslogin" name="deslogin" placeholder="Digite o login" value="<?php echo htmlspecialchars( $user["deslogin"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
             <div class="form-group">
               <label for="nrphone">Telefone</label>
@@ -38,7 +38,7 @@
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" name="inadmin" value="1" <?php if( $user["inadmin"] == 1 ){ ?>checked<?php } ?>> Acesso de Administrador
+                <input type="checkbox" name="inadmin" <?php if( $user["inadmin"] == 1 ){ ?>checked<?php } ?>> Acesso de Administrador
               </label>
             </div>
           </div>
