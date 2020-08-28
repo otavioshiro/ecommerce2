@@ -6,7 +6,7 @@ use Rain\Tpl;
 
 class Mailer{
 
-	const USERNAME = "rifexbrasil@gmail.com";
+	const USERNAME = "oshiroliveira@gmail.com";
 	const PASSWORD = ""; /* "<?password?>"; */
 	const NAME_FROM = "Hcode Store";
 

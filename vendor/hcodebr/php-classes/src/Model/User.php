@@ -154,7 +154,7 @@ class User extends Model {
 
  				$data = $results[0];
 
- 				$results2 = $sql->select("CALL sp_userspasswordrevoceries_create(:iduser, :desip)", array(
+ 				$results2 = $sql->select("CALL sp_userspasswordsrecoveries_create(:iduser, :desip)", array(
  					":iduser"=>$data["iduser"],
  					":desip"=>$_SERVER["REMOTE_ADDR"]
  				));
