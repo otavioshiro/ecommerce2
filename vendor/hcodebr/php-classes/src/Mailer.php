@@ -2,6 +2,9 @@
 
 namespace Hcode;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 use Rain\Tpl;
 
 class Mailer{
@@ -31,7 +34,7 @@ class Mailer{
 		$html = $tpl->draw($tplName, true);
 
 		//Create a new PHPMailer instance
-		$this->mail = new \PHPMailer;
+		$this->mail = new PHPMailer(true);
 
 		//Tell PHPMailer to use SMTP
 		$this->mail->isSMTP();
