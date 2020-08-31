@@ -200,6 +200,7 @@ class User extends Model {
 
  	public static function validForgotDecrypt($code){
 
+ 		$code = str_replace(' ', '+', $code);
  		base64_decode($code);
 
  		$idrecovery = openssl_decrypt($code, 'AES-128-CBC', pack("a16", User::SECRET), 0, pack("a16", User::SECRET_IV));
