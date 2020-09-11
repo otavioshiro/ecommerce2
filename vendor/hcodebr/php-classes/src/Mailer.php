@@ -9,8 +9,8 @@ use Rain\Tpl;
 
 class Mailer{
 
-	const USERNAME = "oshiroliveira@gmail.com";
-	const PASSWORD = ""; /* "<?password?>"; */
+	const USERNAME = "email";
+	const PASSWORD = "senha"; /* "<?password?>"; */
 	const NAME_FROM = "Hcode Store";
 
 	private $mail;
