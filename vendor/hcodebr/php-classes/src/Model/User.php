@@ -201,7 +201,7 @@ class User extends Model {
  	public static function validForgotDecrypt($code){
 
  		$code = str_replace(' ', '+', $code);
- 		base64_decode($code);
+ 		$code = base64_decode($code);
 
  		$idrecovery = openssl_decrypt($code, 'AES-128-CBC', pack("a16", User::SECRET), 0, pack("a16", User::SECRET_IV));
 
@@ -231,6 +231,26 @@ class User extends Model {
  			
  		}
 
+ 	}
+
+ 	public static function setForgotUsed($idrecovery){
+
+ 		$sql = new Sql();
+
+ 		$sql->query("UPDATE tb_userspasswordsrecoveries SET dtrecovery = NOW() WHERE idrecovery = :idrecovery", array(
+ 			":idrecovery"=>$idrecovery
+ 		));
+
+ 	}
+
+ 	public function setPassword($password){
+
+ 		$sql = new Sql();
+
+ 		$sql->query("UPDATE tb_users SET despassword = :password WHERE iduser = :iduser", array(
+ 			":password"=>$password,
+ 			":iduser"=>$this->getiduser()
+ 		));
  	}
 
 }
