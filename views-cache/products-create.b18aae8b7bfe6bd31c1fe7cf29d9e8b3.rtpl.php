@@ -23,7 +23,7 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/admin/products/create" method="post">
+        <form role="form" action="/admin/products/create" method="post" enctype="multpart/form-data">
           <div class="box-body">
             <div class="form-group">
               <label for="desproduct">Nome da produto</label>
@@ -52,6 +52,10 @@
             <div class="form-group">
               <label for="desurl">URL</label>
               <input type="text" class="form-control" id="desurl" name="desurl" >
+            </div>
+            <div class="form-group">
+              <label for="file">Foto</label>
+              <input type="file" class="form-control" id="file" name="file">              
             </div>
           </div>
           <!-- /.box-body -->

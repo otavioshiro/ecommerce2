@@ -38,6 +38,8 @@ $app->post("/admin/products/create", function(){
 	
 	$product->save();
 
+	//if($_FILES["file"]["name"] !== "") $product->setPhoto($_FILES['file']);
+
 	header("Location: /admin/products");
 	exit;
 
@@ -75,6 +77,21 @@ $app->post("/admin/products/:idproduct", function($idproduct){
 	$product->setPhoto($_FILES["file"]);
 
 	header("Location: /admin/products");
+	exit;
+
+});
+
+$app->get("/admin/products/:idproduct/delete", function($idproduct){
+
+	User::verifyLogin();
+
+	$product = new Product();
+
+	$product->get((int)$idproduct);
+
+	$product->delete();
+
+	header('Location: /admin/products');
 	exit;
 
 });
