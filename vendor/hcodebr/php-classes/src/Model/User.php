@@ -340,6 +340,7 @@ class User extends Model {
  	{
  		
  		$_SESSION[User::ERROR_REGISTER] = $msg;
+ 		
  	}
 
  	public static function getSuccess()
