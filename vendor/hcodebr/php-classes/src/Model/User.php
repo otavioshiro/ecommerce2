@@ -336,6 +336,8 @@ class User extends Model {
 
  	}
 
+ 	
+
  	public static function setErrorResgister($msg)
  	{
  		
