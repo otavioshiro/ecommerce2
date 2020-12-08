@@ -187,7 +187,7 @@ $app->get("/checkout", function(){
 
 });
 
-$app->post("./checkout", function(){
+$app->post("/checkout", function(){
 
 	User::verifyLogin(false);
 
@@ -241,7 +241,7 @@ $app->post("./checkout", function(){
 
 	$cart = Cart::getFromSession();
 
-	$totals = $cart->getCalculateTotal();
+	//$totals = $cart->getCalculateTotal();
 
 	$order = new Order();
 
@@ -250,8 +250,16 @@ $app->post("./checkout", function(){
 		'idaddress'=>$address->getiddress(),
 		'iduser'=>$user->getiduser(),
 		'idstatus'=>OrderStatus::EM_ABERTO,
-		'vltotal'=>$totals['vlprice '] + $cart->getvlfreight()
+		'vltotal'=>$cart->getvltotal()
 	]);
+
+	/*$order->setData([
+		'idcart'=>$cart->getidcart(),
+		'idaddress'=>$address->getiddress(),
+		'iduser'=>$user->getiduser(),
+		'idstatus'=>OrderStatus::EM_ABERTO,
+		'vltotal'=>$totals['vlprice '] + $cart->getvlfreight()
+	]);*/
 
 	$order->save();
 
