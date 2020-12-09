@@ -308,11 +308,12 @@ $app->get("/logout", function(){
 
 
 $app->get("/logout", function(){
-
-	User::logout();
-
-	header("Location: /login");
-	exit;
+    
+    User::logout();
+    Cart::removeFromSession();
+    session_regenerate_id();
+    header("Location: /login");
+    exit;
 
 });
 
