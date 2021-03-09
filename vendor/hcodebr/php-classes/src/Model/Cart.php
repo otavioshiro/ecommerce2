@@ -17,25 +17,25 @@ class Cart extends Model {
 
 		$cart = new Cart();
 
-		if (isset($_SESSION[Cart::SESSION]) && (int)$_SESSION[Cart::SESSION]['idcart'] > 0){
-			
+		if (isset($_SESSION[Cart::SESSION]) && (int)$_SESSION[Cart::SESSION]['idcart'] > 0) {
+
 			$cart->get((int)$_SESSION[Cart::SESSION]['idcart']);
-		
+
 		} else {
 
 			$cart->getFromSessionID();
 
 			if (!(int)$cart->getidcart() > 0) {
-				
+
 				$data = [
 					'dessessionid'=>session_id()
 				];
 
 				if (User::checkLogin(false)) {
-					
-					$user = User::getFromSession();
 
-					$data['iduser'] = $user->getiduser();
+					$user = User::getFromSession();
+					
+					$data['iduser'] = $user->getiduser();	
 
 				}
 
@@ -45,6 +45,7 @@ class Cart extends Model {
 
 				$cart->setToSession();
 
+
 			}
 
 		}
@@ -52,7 +53,6 @@ class Cart extends Model {
 		return $cart;
 
 	}
-
 	public function setToSession()
 	{
 	

@@ -1,6 +1,6 @@
 <?php 
 
-use Hcode\Page;
+use \Hcode\Page;
 use \Hcode\Model\Product;
 use \Hcode\Model\Category;
 use \Hcode\Model\Cart;
@@ -149,7 +149,7 @@ $app->get("/checkout", function(){
 	$address = new Address();
 	$cart = Cart::getFromSession();
 
-	if (!isset($_GET['zipcode'])) {
+	if (isset($_GET['zipcode'])) {
 
 		$_GET['zipcode'] = $cart->getdeszipcode();
 
@@ -247,7 +247,7 @@ $app->post("/checkout", function(){
 
 	$order->setData([
 		'idcart'=>$cart->getidcart(),
-		'idaddress'=>$address->getiddress(),
+		'idaddress'=>$address->getidaddress(),
 		'iduser'=>$user->getiduser(),
 		'idstatus'=>OrderStatus::EM_ABERTO,
 		'vltotal'=>$cart->getvltotal()
@@ -265,7 +265,7 @@ $app->post("/checkout", function(){
 
 	header("Location: /order/".$order->getidorder());
 	exit;
-	
+
 });
 
 $app->get("/login", function(){
@@ -502,7 +502,7 @@ $app->get("/order/:idorder", function($idorder){
 
 	$page = new Page();
 
-	$page->setTpl("playment", [
+	$page->setTpl("payment", [
 		'order'=>$order->getValues()
 
 	]);
